@@ -1,0 +1,34 @@
+version: "3.8"
+
+networks:
+    events-network:
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+                - subnet: 172.61.0.0/16
+
+secrets:
+    mongo_root_password:
+        file: ~/docker/container_configs/events/mongo_root_password
+
+services:
+    mongo:
+        image: mongo:7.0
+        container_name: events_db
+        env_file: ./.env
+        networks:
+            - events-network
+        volumes:
+            - ~/docker/container_storage/events/db:/data/db
+            - ~/docker/container_logs/events/db:/var/log/mongodb
+            - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+        secrets:
+            - mongo_root_password
+        ports:
+            - 37017:27017
+        environment:
+            - MONGO_INITDB_ROOT_USERNAME=root
+            - MONGO_INITDB_ROOT_PASSWORD_FILE=/run/secrets/mongo_root_password
+            - MONGO_INITDB_DATABASE=events
+            - MONGO_INITDB_PASSWORD=${EVENT_PASSWORD}
