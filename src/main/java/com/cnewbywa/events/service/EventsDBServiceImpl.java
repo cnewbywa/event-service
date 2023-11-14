@@ -48,11 +48,9 @@ public class EventsDBServiceImpl implements EventsDBService {
 	
 	@Override
 	public void storeEvent(Event event) {
-		LOG.info("Received event to store with id " + event.eventId);
+		LOG.debug("Received event to store with id " + event.eventId);
 		
 		eventsRepository.persist(event);
-		
-		LOG.info("id: " + event.id);
 	}
 	
 	private EventResponse createEventDto(Event event) {
