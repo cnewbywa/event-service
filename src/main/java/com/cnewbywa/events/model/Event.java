@@ -5,7 +5,7 @@ import java.time.Instant;
 import io.quarkus.mongodb.panache.PanacheMongoEntity;
 import io.quarkus.mongodb.panache.common.MongoEntity;
 
-@MongoEntity(collection = "event")
+@MongoEntity(database = "events", collection = "event")
 public class Event extends PanacheMongoEntity {
 	
 	public String eventId;
