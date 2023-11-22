@@ -1,0 +1,20 @@
+version: "3.8"
+
+networks:
+    events:
+        external: true
+        name: db_events-network
+    common:
+        external: true
+        name: internal-network
+
+services:
+    # item
+    item:
+        image: c/event-service:1.0.0-SNAPSHOT
+        env_file: ./.env
+        networks:
+            - events
+            - common
+        ports:
+            - 8181:8080
