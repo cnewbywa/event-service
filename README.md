@@ -91,3 +91,11 @@ native executable running in a container:
 ```
 ./mvnw verify -Dnative -Dquarkus.native.container-build=true -Dquarkus.container-image.build=true -Dskip.surefire.tests=true -Dquarkus.profile=docker
 ```
+
+## OpenAPI and Swagger UI
+
+Swagger UI is available with both profiles. It can be accessed when running
+
+in local: `http://localhost:8080/q/swagger-ui`
+
+in docker: `https://localhost:8181/q/swagger-ui`
