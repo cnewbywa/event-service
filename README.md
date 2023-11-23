@@ -94,7 +94,7 @@ native executable running in a container:
 
 ## OpenAPI and Swagger UI
 
-Swagger UI is available with both profiles. It can be accessed when running
+[Swagger UI](https://swagger.io/tools/swagger-ui/) is available with both profiles. It can be accessed when running
 
 in local: `http://localhost:8080/q/swagger-ui`
 
