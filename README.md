@@ -1,24 +1,26 @@
 # Event Service
-
 This project contains a service that fetches events from a [Kafka](https://kafka.apache.org/) topic and stores them to a [Mongo](https://www.mongodb.com/) database. It also provides a Rest API to fetch events from the database.
 
 The project uses [Quarkus](https://quarkus.io/) framework and takes advantage of Java 21 virtual threads.
 
-## Running the application in dev mode
+## Prerequisites for building the service
 
+* [event-message](https://github.com/cnewbywa/event-message) project built and installed to local Maven repository
+
+## Running the application in dev mode
 You can run your application in dev mode that enables live coding using:
 
-`./mvnw compile quarkus:dev`
+```
+./mvnw compile quarkus:dev
+```
 
 > **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
 
 ## Prerequisites for running the application outside of dev mode
-
 * Mongo instance running. An instance can be started with `docker/db/start.sh` which uses [Docker Compose](https://docs.docker.com/compose/) to start a pre-configured container. Please note that a docker secret (mongo_root_password) needs to be created before starting. Location of it is set in docker-compose.yml.
-* Kafka instance running. An instance can be started with `docker/runtime/messaging/start-messaging.sh` in `common-services` repository which uses Docker Compose to start a pre-configured container
+* Kafka instance running. An instance can be started with `docker/runtime/messaging/start-messaging.sh` in [common-services](https://github.com/cnewbywa/common-services) repository which uses Docker Compose to start a pre-configured container
 
 ## Packaging and running the application
-
 The application can be packaged using:
 
 ```
@@ -47,7 +49,6 @@ java -Dquarkus.profile=local -DEVENT_PASSWORD=events -jar target/*-runner.jar
 ```
 
 ## Creating a native executable
-
 You can create a native executable using:
 
 ```
@@ -69,7 +70,6 @@ Or you can create a native executable running in a container using:
 You can then start the container with: `start.sh` in `./docker/app`
 
 ## Running integration tests
-
 You can run integration tests the following ways:
 
 Test the service running as a:
@@ -93,7 +93,6 @@ native executable running in a container:
 ```
 
 ## OpenAPI and Swagger UI
-
 [Swagger UI](https://swagger.io/tools/swagger-ui/) is available with both profiles. It can be accessed when running
 
 in local: `http://localhost:8080/q/swagger-ui`
