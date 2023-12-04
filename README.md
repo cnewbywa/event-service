@@ -29,6 +29,7 @@ The application can be packaged using:
 
 It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
 Be aware that it’s not an *über-jar* as the dependencies are copied into the `target/quarkus-app/lib/` directory.
+A code coverage report will also be available in `target/jacoco-report`.
 
 The application is now runnable using 
 
